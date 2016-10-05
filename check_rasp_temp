@@ -80,15 +80,15 @@ PERF="temp=${TEMP};${WARNING};${CRITICAL};;"
 
 COMPARISON=`echo "if($TEMP>=$CRITICAL) 1 else 0;" | bc`
 if [ $COMPARISON -eq 1 ] ; then
-	echo "TEMPERATURE CRITICAL: $TEMP | $PERF"
+	echo "TEMP CRIT: $TEMP | $PERF"
 	exit 2
 fi
 
 COMPARISON=`echo "if($TEMP>=$WARNING) 1 else 0;" | bc`
 if [ $COMPARISON -eq 1 ] ; then
-	echo "TEMPERATURE WARNING: $TEMP | $PERF"
+	echo "TEMP WARN: $TEMP | $PERF"
 	exit 1
 fi
 
-echo "TEMPERATURE OK: $TEMP | $PERF"
+echo "TEMP OK: $TEMP | $PERF"
 exit 0;
