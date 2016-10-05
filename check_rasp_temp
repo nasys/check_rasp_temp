@@ -75,7 +75,7 @@ fi
 
 
 # Perform the checks
-TEMP=`$VCGENCMD measure_temp | awk -F"=" '{print $2}' | awk -F"'" '{print $1}'`
+TEMP=`echo "scale=2; $(cat /sys/class/thermal/thermal_zone0/temp)/1000" | bc`
 PERF="temp=${TEMP};${WARNING};${CRITICAL};;"
 
 COMPARISON=`echo "if($TEMP>=$CRITICAL) 1 else 0;" | bc`
